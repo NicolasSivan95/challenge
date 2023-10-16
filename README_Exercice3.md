@@ -23,10 +23,10 @@ The variable API_KEY has been set with my key. Feel free to change with yours by
 To run the script, execute the following in a terminal:
 
 ```
-python ip_reputation_check.py
+python reputation_ip.py
 ```
 
-Where `ip_reputation_check.py` is the filename of the script.
+Where `reputation_ip.py` is the filename of the script.
 
 ## IPs
 
