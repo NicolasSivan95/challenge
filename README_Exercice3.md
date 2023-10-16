@@ -26,8 +26,6 @@ To run the script, execute the following in a terminal:
 python reputation_ip.py
 ```
 
-Where `reputation_ip.py` is the filename of the script.
-
 ## IPs
 
 You can change the IP addresses to be checked in the `ip_list` variable in the script. 
