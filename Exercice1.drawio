@@ -1,0 +1,90 @@
+<mxfile host="app.diagrams.net" modified="2023-10-16T09:53:29.459Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="luARZ6nE9nFvDqToyXpE" version="21.6.2" type="google">
+  <diagram name="Page-1" id="V7gej5NQQJeKIRxJS3L4">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="24WVmlsN--YAi-bdCud0-1" value="Application Load Balancer&lt;br&gt;&lt;br&gt;&lt;br&gt;Redirects https (443) trafic to 2 target groups depending on the host header (URL) (50/50)&lt;br&gt;The ALB is deployed on 2 public subnets (AZ1 &amp;amp; AZ2)&lt;br&gt;" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.groupCenter;grIcon=mxgraph.aws4.group_elastic_load_balancing;grStroke=1;strokeColor=#007DBC;fillColor=none;verticalAlign=top;align=center;fontColor=#007DBC;dashed=0;spacingTop=25;" vertex="1" parent="1">
+          <mxGeometry x="507" y="260" width="320" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-2" value="Security group&lt;br&gt;&lt;br&gt;Allows pre-defined IPs (internal subnets or VPN)" style="fillColor=none;strokeColor=#DD3522;verticalAlign=top;fontStyle=0;fontColor=#DD3522;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="534.5" y="400" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-3" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.certificate_manager_2;fillColor=#759C3E;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="684.5" y="400" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-5" value="Import certificates from Certificate Manager" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="679.5" y="490" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-6" value="" style="shape=actor;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="370" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-7" value="HTTPS request&amp;nbsp;" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="24WVmlsN--YAi-bdCud0-6">
+          <mxGeometry x="-0.0871" y="-17" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="480" as="sourcePoint" />
+            <mxPoint x="170" y="415" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-8" value="Target group 1" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="250" width="340" height="170" as="geometry">
+            <mxRectangle x="610" y="260" width="110" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-16" value="EC2 instance contents" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_ec2_instance_contents;strokeColor=#D86613;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#D86613;dashed=0;" vertex="1" parent="24WVmlsN--YAi-bdCud0-8">
+          <mxGeometry x="30" y="60" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-18" value="Deployed on AZ1&lt;br&gt;Hosts an application &amp;amp; Database" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="24WVmlsN--YAi-bdCud0-16">
+          <mxGeometry y="35" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-9" value="DNS Route 53" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="360" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-10" value="&quot;A&quot; record redirects the&lt;br&gt;&amp;nbsp;request to a load balancer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="24WVmlsN--YAi-bdCud0-9">
+          <mxGeometry x="30" y="40" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-11" value="HTTPS request&amp;nbsp;" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="24WVmlsN--YAi-bdCud0-9" target="24WVmlsN--YAi-bdCud0-1">
+          <mxGeometry x="-0.0871" y="-17" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="414" y="430" as="sourcePoint" />
+            <mxPoint x="494" y="430" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-13" value="HTTPS request&amp;nbsp;" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="24WVmlsN--YAi-bdCud0-1" target="24WVmlsN--YAi-bdCud0-8">
+          <mxGeometry x="-0.0871" y="-17" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="827" y="450" as="sourcePoint" />
+            <mxPoint x="934" y="450" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-14" value="Target group 2" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="430" width="340" height="160" as="geometry">
+            <mxRectangle x="610" y="260" width="110" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-24" value="EC2 instance contents" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_ec2_instance_contents;strokeColor=#D86613;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#D86613;dashed=0;" vertex="1" parent="24WVmlsN--YAi-bdCud0-14">
+          <mxGeometry x="30" y="56" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-25" value="Deployed on AZ2&lt;br&gt;Hosts an application &amp;amp; Database" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="24WVmlsN--YAi-bdCud0-24">
+          <mxGeometry y="35" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-26" value="Listening on port 443 or 80 if not supported" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="24WVmlsN--YAi-bdCud0-14">
+          <mxGeometry x="35" y="24" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-15" value="HTTPS request&amp;nbsp;" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="24WVmlsN--YAi-bdCud0-1" target="24WVmlsN--YAi-bdCud0-14">
+          <mxGeometry x="-0.0871" y="-17" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="837" y="376" as="sourcePoint" />
+            <mxPoint x="950" y="345" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-19" value="Listening on port 443 or 80 if not supported" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="975" y="278" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="24WVmlsN--YAi-bdCud0-27" value="Backup policy :&lt;br&gt;An EC2 snapshot is done every night thanks to Lifecycle manager&lt;br&gt;A script on the system makes a database backup and sends it to an s3 bucket" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="970" y="620" width="245" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
